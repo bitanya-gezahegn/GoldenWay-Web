@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
+        <link rel="stylesheet" href="resources/css/main.css">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     
@@ -21,7 +22,7 @@
             </div>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="#" class="hover:text-blue-200">Home</a></li>
+                    <li><a href="#" class="hover:text-blue-200">Dashboard</a></li>
                     <li><a href="#" class="hover:text-blue-200">Routes</a></li>
                     <li><a href="#" class="hover:text-blue-200">Bookings</a></li>
                     <li><a href="#" class="hover:text-blue-200">Contact</a></li>
@@ -34,34 +35,29 @@
         <section class="bg-white shadow-md rounded-lg p-8">
             <h2 class="text-3xl font-bold text-blue-600 mb-6 text-center">Book Your Bus Ticket</h2>
             
-            <form action="" method="GET" class="max-w-2xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                        <label for="from" class="block text-gray-700 mb-2">From</label>
-                        <input type="text" id="from" name="from" 
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                               placeholder="Departure City" required>
-                    </div>
-                    <div>
-                        <label for="to" class="block text-gray-700 mb-2">To</label>
-                        <input type="text" id="to" name="to" 
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                               placeholder="Arrival City" required>
-                    </div>
-                    <div>
-                        <label for="date" class="block text-gray-700 mb-2">Date</label>
-                        <input type="date" id="date" name="date" 
-                               class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                               required>
-                    </div>
-                </div>
-                <div class="text-center mt-6">
-                    <button type="submit" 
-                            class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
-                        Search Buses
-                    </button>
-                </div>
-            </form>
+            <form action="" method="GET" class="search-form">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="from">From:</label>
+      <input type="text" id="from" name="from" placeholder="Departure City">
+    </div>
+    <div class="form-group">
+      <label for="to">To:</label>
+      <input type="text" id="to" name="to" placeholder="Arrival City">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="departure-date">Departure Date:</label>
+      <input type="date" id="departure-date" name="departure-date">
+    </div>
+    <div class="form-group">
+      <label for="arrival-date">Arrival Date:</label>
+      <input type="date" id="arrival-date" name="arrival-date">
+    </div>
+  </div>
+  <button type="submit">Search</button>
+</form>
         </section>
 
         <section class="mt-10 text-center">
@@ -93,7 +89,131 @@
     </footer>
 
     @vite('resources/js/app.js')
+        <style>
+         /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* White background */
+}
+
+/* Header */
+header {
+    background-color: #F5D468; /* Golden yellow */
+    padding: 20px;
+    color: #333; /* Dark text */
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    color: #666; /* Slightly darker hover color */
+}
+
+/* Search Form */
+.search-form {
+    background-color: #FFF9D0; /* Light yellow */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 600px;
+    margin-left: 100px;
+
     
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px; /* Adjust margin to control spacing */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 150px; /* Adjust width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-form button {
+    background-color: #D32F2F; /* Dark red */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+      margin-right: 500px;
+}
+
+.search-form button:hover {
+    background-color: #992222; /* Darker red on hover */
+}
+
+/* Why Choose GoldenWay? Section */
+.why-choose {
+    margin-top: 30px;
+}
+
+.why-choose h2 {
+    margin-bottom: 20px;
+}
+
+.why-choose ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.why-choose ul li {
+    margin-bottom: 10px;
+}
+
+.why-choose ul li i {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #F5D468; /* Golden yellow */
+    padding: 20px;
+    color: #333;
+    text-align: center;
+}
+           </style>    
 
     </body>
 </html>
