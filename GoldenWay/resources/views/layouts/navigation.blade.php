@@ -14,15 +14,23 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('GoldenWay') }}
                     </x-nav-link>
                 </div>
             </div>
-
+            @role('admin')
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Users') }}
+                </x-nav-link>
+            </div>
+            @endrole
             <!-- Check if user is authenticated -->
-            @if(auth()->check())
-                <!-- Settings Dropdown for Authenticated Users -->
+            <!-- Settings Dropdown for Authenticated Users -->
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
+                 
+            @if(auth()->check())
+                
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -51,13 +59,37 @@
                         </x-slot>
                     </x-dropdown>
                 </div>
-            @else
+                @else
                 <!-- Links for Guest Users -->
                 <div class="hidden sm:flex sm:items-center sm:ml-6 space-x-4">
-                    <x-nav-link :href="route('login')">
+                    @role('user')
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('About Us') }}
+                        </x-nav-link>
+                       @endrole
+                       <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Book A Trip') }}
+                    </x-nav-link>
+                       <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('About Us') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Contact Us') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('FAQ & Support') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('login')" style="background-color: #d2371e;
+    border-radius: 7px;
+    padding: 10px;
+    color: white; ">
                         {{ __('Login') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('register')">
+                    <x-nav-link :href="route('register')" style="background-color: #d2371e;
+    border-radius: 7px;
+    padding: 10px;
+    color: white;">
                         {{ __('Register') }}
                     </x-nav-link>
                 </div>
