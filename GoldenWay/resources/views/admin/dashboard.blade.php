@@ -129,5 +129,6 @@ section{
   height: 100vh;
   transition: all .5s;
 }
+
 </style>
 @endsection
