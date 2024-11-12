@@ -3,7 +3,15 @@
 @section('title', 'Home Page')
 
 @section('content')
-<style>   
+<style> 
+
+section {
+  background: url('/images/bkgimg.JPG') no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  transition: all .5s;
+}
 body {
 font-family: Arial, sans-serif;
 margin: 0;

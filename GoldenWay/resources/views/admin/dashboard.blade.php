@@ -186,6 +186,7 @@
         margin: 0;
         list-style: none;
         text-decoration: none;
+        
       }
       body {
         font-family: 'Roboto', sans-serif;
@@ -290,21 +291,21 @@
       }
 
       /* Table Styling */
-      .table {
+      /* .table {
         width: 100%;
         margin-top: 20px;
         border-collapse: collapse;
-      }
-      .table th, .table td {
+      } */
+      /* .table th, .table td {
         padding: 12px;
         text-align: left;
         border: 1px solid #ddd;
         word-wrap: break-word; /* Enable word wrapping */
-        white-space: normal; 
+        /* white-space: normal; 
       }
       .table th {
         background-color: #f2f2f2;
-      }
+      } */ 
     </style>
 
     <!-- JavaScript for submenu toggle, dynamic resizing, and user list visibility -->
