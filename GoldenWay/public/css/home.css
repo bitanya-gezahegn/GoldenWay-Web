@@ -2,129 +2,66 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-  }
-  
-  body {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
     background-color: #fff;
-  }
-  
-  section {
+}
+
+section {
     background-image: url('/images/bkgimg.JPG');
     background-size: cover;
     background-position: center;
     height: 100vh;
-    transition: all 0.5s ease-in-out;
-  }
-  
-  header {
-    background-color: #F5D468;
-    padding: 2em;
-    color: #333;
-  }
-  
-  header h1 {
-    margin: 0;
-    font-size: 2em;
-  }
-  
-  header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header nav ul li {
-    display: inline-block;
-    margin-right: 1em;
-  }
-  
-  header nav ul li a {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  header nav ul li a:hover {
-    color: #666;
-  }
-  
-  .search-form {
-    background-color: #FFF9D0;
-    padding: 2em;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 80%;
-    margin: 2em auto;
-  }
-  
-  .form-row {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center; /* Center the hero content vertically */
     align-items: center;
-    margin-bottom: 1em;
-    flex-wrap: wrap;
-  }
-  
-  .form-group {
+    padding-top: 100px; /* Space for top heading */
+    padding-bottom: 50px; /* Space for bottom content */
+    transition: all 0.5s ease-in-out;
+}
+
+/* White heading at the top */
+.white-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+
+/* Center the hero content */
+.hero-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 1em;
-    flex: 1;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5em;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .search-form button {
-    background-color: #D32F2F;
-    color: #fff;
+    justify-content: center; /* Center horizontally */
+    margin-top: auto;
+}
+
+/* Centering "Explore the world, your way" */
+.centered-heading {
+    background-color: #FFD700; /* Yellow background */
     padding: 0.5em 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 1em;
-  }
-  
-  .search-form button:hover {
-    background-color: #992222;
-  }
-  
-  .why-choose {
-    margin-top: 3em;
-  }
-  
-  .why-choose h2 {
-    margin-bottom: 2em;
-  }
-  
-  .why-choose ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .why-choose ul li {
-    margin-bottom: 1em;
-  }
-  
-  .why-choose ul li i {
-    text-align: center;
-    margin-bottom: 1em;
-  }
-  
-  footer {
-    background-color: #F5D468;
-    padding: 2em;
-    color: #333;
-    text-align: center;
-  }
+    border-radius: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-content {
+        margin-top: auto;
+        padding-bottom: 30px; /* Extra padding on smaller screens */
+    }
+
+    .white-heading {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-height: 700px) {
+    section {
+        padding-top: 50px; /* Reduce top padding on shorter screens */
+        padding-bottom: 20px; /* Reduce bottom padding on shorter screens */
+    }
+}

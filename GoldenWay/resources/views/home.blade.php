@@ -8,37 +8,23 @@
 </head>
 
 <main class="container mx-auto mt-10 px-4">
-    <!-- <section class="bg-white shadow-md rounded-lg p-8">
-        <h2 class="text-3xl font-bold text-blue-600 mb-6 text-center">Book Your Bus Ticket</h2>
+    <section class="mt-10 text-center section-hero" style="position: relative;">
+        <!-- White heading "Why Choose GoldenWay?" at the top -->
+        <h3 class="text-2xl font-semibold mb-6 white-heading" style="color: white; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);">
+            Why Choose GoldenWay?
+        </h3>
         
-        <form action="" method="GET" class="search-form">
-<div class="form-row">
-<div class="form-group">
-  <label for="from">From:</label>
-  <input type="text" id="from" name="from" placeholder="Departure City">
-</div>
-<div class="form-group">
-  <label for="to">To:</label>
-  <input type="text" id="to" name="to" placeholder="Arrival City">
-</div>
-</div>
-<div class="form-row">
-<div class="form-group">
-  <label for="departure-date">Departure Date:</label>
-  <input type="date" id="departure-date" name="departure-date">
-</div>
-<div class="form-group">
-  <label for="arrival-date">Arrival Date:</label>
-  <input type="date" id="arrival-date" name="arrival-date">
-</div>
-</div>
-<button type="submit">Search</button>
-</form>
-    </section> -->
-
-    <section class="mt-10 text-center">
-        <h3 class="text-2xl font-semibold mb-6">Why Choose GoldenWay?</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Centered "Explore the world, your way" content -->
+        <div class="p-6 rounded-lg shadow-md text-center hero-content">
+            <i class="fas fa-ticket-alt text-4xl text-blue-600 mb-4"></i>
+            <h4 class="bg-yellow-200 text-4xl font-bold text-white inline-block px-4 py-2 rounded-md centered-heading">
+                Explore the world, your way
+            </h4>
+            <p class="text-white mt-4">Find your perfect adventure with our exclusive offers.</p>
+        </div>
+        
+        <!-- Features at the bottom of the section with left-aligned text -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 text-left">
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <i class="fas fa-bus text-4xl text-blue-600 mb-4"></i>
                 <h4 class="text-xl font-bold mb-2">Wide Network</h4>
@@ -65,5 +51,4 @@
 </footer>
 
 @vite('resources/js/app.js')
-   
 @endsection
