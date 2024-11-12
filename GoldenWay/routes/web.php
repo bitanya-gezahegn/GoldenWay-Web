@@ -25,7 +25,7 @@ Route::middleware(['role:admin'])->get('/admin/dashboard', [AdminController::cla
 // Route::middleware(['auth','role:driver'])->group(function () {
 //     Route::get('/driver/dashboard', [DriverController::class, 'dashboard']);
 // });
-Route::middleware(['role:driver'])->get('/driver/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::middleware(['role:driver'])->get('/driver/dashboard', [AdminController::class, 'index'])->name('driver.dashboard');
 // Routes accessible only to Operations Officers
 Route::middleware(['role:operationsOfficer'])->get('/operationsOfficer/dashboard', [AdminController::class, 'index'])->name('operationsOfficer.dashboard');
 // Route::middleware(['auth','role:operationsOfficer'])->group(function () {
@@ -39,6 +39,7 @@ Route::middleware(['role:operationsOfficer'])->get('/operationsOfficer/dashboard
 //     // Route::get('/tickets/manage', [TicketOfficerController::class, 'manageTickets']);
 // });
 Route::middleware(['role:ticketOfficer'])->get('/ticketOfficer/dashboard', [AdminController::class, 'index'])->name('ticketOfficer.dashboard');
+
 Route::middleware(['role:user'])->get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard', function () {
