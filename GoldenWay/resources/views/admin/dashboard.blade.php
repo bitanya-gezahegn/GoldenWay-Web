@@ -13,30 +13,44 @@
     <div class="sidebar">
       <header>Dashboard</header>
       <ul>
-        <!-- Register Employee -->
+        <!-- Employee management -->
         <li>
           <a href="#" onclick="toggleMenu('registerEmployee')">
-            <i class="fas fa-user-plus"></i> Register Employee
+            <i class="fas fa-user-plus"></i> Employee management
           </a>
           <ul class="submenu" id="registerEmployee">
-            <li><a href="#">Employee Registration Form</a></li>
-            <li><a href="#" id="employeeListMenu">Employee List</a></li> <!-- Employee List submenu link -->
-            <li><a href="#">Registration History</a></li>
-            <li><a href="#">Employee Profile</a></li>
+            <li><a href="#">Driver</a></li>
+            <li><a href="#" id="employeeListMenu">Operation officer</a></li> <!-- Employee List submenu link -->
+             <li><a href="#">Ticket officer</a></li>
+            <!-- <li><a href="#">Employee Profile</a></li>  -->
           </ul>
         </li>
+
+        <!-- User management -->
+        <li>
+          <a href="#" onclick="toggleMenu('manageUser')">
+            <i class="fas fa-users"></i> User management
+          </a>
+          <ul class="submenu" id="manageUser">
+            <li><a href="#" id="userListMenu">User List</a></li>
+            <li><a href="#">Add New User</a></li>
+            <li><a href="#">Edit User</a></li>
+            <li><a href="#">User Activity Log</a></li>
+          </ul>
+        </li>
+
         
-        <!-- Manage Booking -->
+        <!--Booking management -->
         <li>
           <a href="#" onclick="toggleMenu('manageBooking')">
-            <i class="fas fa-calendar-alt"></i> Manage Booking
+            <i class="fas fa-calendar-alt"></i> Booking management
           </a>
-          <ul class="submenu" id="manageBooking">
+          <!-- <ul class="submenu" id="manageBooking">
             <li><a href="#">Booking Management System</a></li>
             <li><a href="#">Booking Filters</a></li>
             <li><a href="#">Edit Booking</a></li>
             <li><a href="#">Booking History</a></li>
-          </ul>
+          </ul> -->
         </li>
 
         <!-- Promotional Content -->
@@ -48,40 +62,12 @@
             <li><a href="#">Promotions Overview</a></li>
             <li><a href="#">Add New Promotion</a></li>
             <li><a href="#">Active & Expired Promotions</a></li>
-            <li><a href="#">Promotion Analytics</a></li>
+            <!-- <li><a href="#">Promotion Analytics</a></li> -->
           </ul>
         </li>
 
-        <!-- Manage User -->
-        <li>
-          <a href="#" onclick="toggleMenu('manageUser')">
-            <i class="fas fa-users"></i> Manage User
-          </a>
-          <ul class="submenu" id="manageUser">
-            <li><a href="#" id="userListMenu">User List</a></li>
-            <li><a href="#">Add New User</a></li>
-            <li><a href="#">Edit User</a></li>
-            <li><a href="#">User Activity Log</a></li>
-          </ul>
-        </li>
-
-
-        
-        <!-- View Feedback -->
-        <li>
-          <a href="#" onclick="toggleMenu('viewFeedback')">
-            <i class="fas fa-comments"></i> View Feedback
-          </a>
-          <ul class="submenu" id="viewFeedback">
-            <li><a href="#">User Feedback List</a></li>
-            <li><a href="#">View Detailed Feedback</a></li>
-            <li><a href="#">Feedback Analytics</a></li>
-            <li><a href="#">Respond to Feedback</a></li>
-          </ul>
-        </li>
-
-        <!-- Reports -->
-        <li>
+                <!-- Reports -->
+                <li>
           <a href="#" onclick="toggleMenu('reports')">
             <i class="fas fa-tools"></i> Reports
           </a>
@@ -93,8 +79,24 @@
           </ul>
         </li>
 
-        <!-- Notifications -->
+                
+        <!-- User feedback -->
         <li>
+          <a href="#" onclick="toggleMenu('viewFeedback')">
+            <i class="fas fa-comments"></i> User feedback
+          </a>
+          <ul class="submenu" id="viewFeedback">
+            <li><a href="#">User Feedback List</a></li>
+            <!-- <li><a href="#">View Detailed Feedback</a></li> -->
+            <!-- <li><a href="#">Feedback Analytics</a></li> -->
+            <li><a href="#">Respond to Feedback</a></li>
+          </ul>
+        </li>
+
+
+
+        <!-- Notifications -->
+        <!-- <li>
           <a href="#" onclick="toggleMenu('notifications')">
             <i class="fas fa-bell"></i> Notifications
           </a>
@@ -104,10 +106,10 @@
             <li><a href="#">Notification Settings</a></li>
             <li><a href="#">Notification History</a></li>
           </ul>
-        </li>
+        </li> -->
 
         <!-- Payment Gateway -->
-        <li>
+        <!-- <li>
           <a href="#" onclick="toggleMenu('paymentGateway')">
             <i class="fas fa-credit-card"></i> Payment Gateway
           </a>
@@ -117,7 +119,7 @@
             <li><a href="#">Refund Requests</a></li>
             <li><a href="#">Payment Analytics</a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </div>
 
