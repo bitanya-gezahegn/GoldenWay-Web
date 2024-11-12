@@ -58,7 +58,7 @@
             <i class="fas fa-users"></i> Manage User
           </a>
           <ul class="submenu" id="manageUser">
-            <li><a href="#">User List</a></li>
+            <li><a href="#" id="userListMenu">User List</a></li>
             <li><a href="#">Add New User</a></li>
             <li><a href="#">Edit User</a></li>
             <li><a href="#">User Activity Log</a></li>
@@ -122,7 +122,7 @@
     </div>
 
     <!-- Employee Table -->
-    <div class="container mt-4" id="employeeList" style="display:none; margin-left: 300px;">
+    <!-- <div class="container mt-4" id="employeeList" style="display:none; margin-left: 300px;">
         <h2>Employee List</h2>
         <table class="table table-bordered">
             <thead>
@@ -144,7 +144,7 @@
                     <td>John Doe</td>
                     <td>johndoe@example.com</td>
                     <td>0911121314</td> <!-- Updated phone number -->
-                    <td>Software Engineer</td>
+                    <!-- <td>Software Engineer</td>
                     <td>IT Department</td>
                     <td>2023-05-01</td>
                     <td>Active</td>
@@ -153,25 +153,32 @@
                         <a href="#">Delete</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
+                <tr> -->
+                    <!-- <td>2</td>
                     <td>Jane Smith</td>
                     <td>janesmith@example.com</td>
                     <td>0911111213</td> <!-- Updated phone number -->
-                    <td>HR Manager</td>
-                    <td>HR Department</td>
+                    <!-- <td>HR Manager</td> -->
+                    <!-- <td>HR Department</td>
                     <td>2022-03-15</td>
                     <td>Active</td>
-                    <td>
-                        <a href="#">Edit</a> | 
+                    <td> -->
+                        <!-- <a href="#">Edit</a> | 
                         <a href="#">Delete</a>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
+            </tbody> -->
+        <!-- </table>
+    </div>  -->
 
     <!-- Sidebar and body styling with scrollable menu and clickable dropdowns -->
+
+
+    <div class="container mt-4" id="userList" style="display:none; margin-left: 300px;">
+    <h2>User List</h2>
+    <x-dynamic-table table="users" />
+</div>
+
     <style>
       @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
       * {
@@ -300,28 +307,31 @@
       }
     </style>
 
-    <!-- JavaScript for submenu toggle, dynamic resizing, and employee list visibility -->
+    <!-- JavaScript for submenu toggle, dynamic resizing, and user list visibility -->
     <script>
       function toggleMenu(id) {
         const submenu = document.getElementById(id);
         submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+
+       
       }
 
-      // Show employee list when the "Employee List" submenu item is clicked
-      document.getElementById('employeeListMenu').addEventListener('click', function(event) {
+      // Show user list when the "user List" submenu item is clicked
+      document.getElementById('userListMenu').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent default link behavior
-        const employeeList = document.getElementById('employeeList');
-        // Toggle the visibility of the employee list table
-        employeeList.style.display = employeeList.style.display === 'block' ? 'none' : 'block';
+       
+
+        const userList = document.getElementById('userList');
+        userList.style.display = userList.style.display === 'block' ? 'none' : 'block';
       });
 
       // Update margin-left of the content section based on the sidebar toggle
       document.getElementById('check').addEventListener('change', function() {
-        const employeeList = document.getElementById('employeeList');
+        const userList = document.getElementById('userList');
         if (this.checked) {
-          employeeList.style.marginLeft = '250px'; // Shift the table right when sidebar is open
+         userList.style.marginLeft = '250px'; // Shift the table right when sidebar is open
         } else {
-          employeeList.style.marginLeft = '0'; // Reset margin when sidebar is closed
+          userList.style.marginLeft = '0'; // Reset margin when sidebar is closed
         }
       });
     </script>
