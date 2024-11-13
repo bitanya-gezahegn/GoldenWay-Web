@@ -55,4 +55,12 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
+
+    public function showUsersByRole($role)
+{
+    $columns = ['id','name', 'email', 'created_at']; // Define columns to display
+    $data = User::role($role)->get(); // Retrieve users with the specified role
+
+    return view('admin.dashboard', compact('data', 'columns', 'role'));
+}
 }

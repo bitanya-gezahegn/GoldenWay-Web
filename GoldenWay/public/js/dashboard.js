@@ -10,6 +10,12 @@ document.getElementById('userListMenu').addEventListener('click', function(event
     userList.style.display = userList.style.display === 'block' ? 'none' : 'block';
 });
 
+document.getElementById('driverListMenu').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default link behavior
+    const driverList = document.getElementById('driverList');
+    driverList.style.display = driverList.style.display === 'block' ? 'none' : 'block';
+});
+
 // Update margin-left of the content section based on the sidebar toggle
 document.getElementById('check').addEventListener('change', function() {
     const userList = document.getElementById('userList');

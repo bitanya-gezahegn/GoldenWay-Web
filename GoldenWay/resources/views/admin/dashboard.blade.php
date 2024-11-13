@@ -19,9 +19,9 @@
             <i class="fas fa-user-plus"></i> Employee management
           </a>
           <ul class="submenu" id="registerEmployee">
-            <li><a href="#">Driver</a></li>
-            <li><a href="#" id="employeeListMenu">Operation officer</a></li> <!-- Employee List submenu link -->
-             <li><a href="#">Ticket officer</a></li>
+            <li><a href="#" id="driverListMenu">Driver</a></li>
+            <li><a href="#" id="operationsOfficerListMenu">Operation officer</a></li> <!-- Employee List submenu link -->
+             <li><a href="#" id="ticketOfficerListMenu">Ticket officer</a></li>
             <!-- <li><a href="#">Employee Profile</a></li>  -->
           </ul>
         </li>
@@ -178,7 +178,31 @@
 
     <div class="container mt-4" id="userList" style="display:none; margin-left: 300px;">
     <h2>User List</h2>
-    <x-dynamic-table table="users" />
+    @php
+    use App\Models\User;
+    // Define the role, columns, and retrieve data
+    $role = 'user'; // Or any other role
+    $columns = ['id','name', 'email', 'created_at'];
+    $data = User::role($role)->get();
+  
+@endphp
+
+<x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
+
+</div>
+<div class="container mt-4" id="driverList" style="display:none; margin-left: 300px;">
+  <h2>driver List</h2>
+  @php
+
+  // Define the role, columns, and retrieve data
+  $role = 'driver'; // Or any other role
+  $columns = ['id','name', 'email', 'created_at'];
+  $data = User::role($role)->get();
+
+@endphp
+
+<x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
+
 </div>
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 <script src="{{ asset('js/dashboard.js') }}"></script>

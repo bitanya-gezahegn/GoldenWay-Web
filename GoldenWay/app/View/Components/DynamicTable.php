@@ -6,15 +6,16 @@ use Illuminate\Support\Facades\DB;
 
 class DynamicTable extends Component
 {
+
     public $data;
     public $columns;
+    public $role;
 
-    public function __construct($table)
+    public function __construct($data, $columns, $role)
     {
-        // Fetch data from the specified table
-        $this->data = DB::table($table)->get();
-        // Get the column names
-        $this->columns = DB::getSchemaBuilder()->getColumnListing($table);
+        $this->data = $data;
+        $this->columns = $columns;
+        $this->role = $role;
     }
 
     public function render()
@@ -22,6 +23,25 @@ class DynamicTable extends Component
         return view('components.dynamic-table', [
             'data' => $this->data,
             'columns' => $this->columns,
+            'role'=> $this->role
         ]);
     }
+    // public $data;
+    // public $columns;
+
+    // public function __construct($table)
+    // {
+    //     // Fetch data from the specified table
+    //     $this->data = DB::table($table)->get();
+    //     // Get the column names
+    //     $this->columns = DB::getSchemaBuilder()->getColumnListing($table);
+    // }
+
+    // public function render()
+    // {
+    //     return view('components.dynamic-table', [
+    //         'data' => $this->data,
+    //         'columns' => $this->columns,
+    //     ]);
+    // }
 }

@@ -46,6 +46,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//route for dynamic table for dashboard
+Route::get('/admin/dashboard#', [UserController::class, 'showUsersByRole'])->name('showUsersByRole');
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
