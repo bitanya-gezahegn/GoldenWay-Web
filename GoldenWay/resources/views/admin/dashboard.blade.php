@@ -173,22 +173,22 @@
         <!-- </table>
     </div>  -->
 
-    <!-- Sidebar and body styling with scrollable menu and clickable dropdowns -->
+    
 
-
+{{-- USER TABLE --}}
     <div class="container mt-4" id="userList" style="display:none; margin-left: 300px;">
     <h2>User List</h2>
     @php
     use App\Models\User;
     // Define the role, columns, and retrieve data
     $role = 'user'; // Or any other role
-    $columns = ['id','name', 'email', 'created_at'];
+    $columns = ['id','name', 'email', 'created_at', 'email_verified_at','created_at','updated_at'];
     $data = User::role($role)->get();
   
 @endphp
 
 <x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
-
+{{-- DRIVER TABLE --}}
 </div>
 <div class="container mt-4" id="driverList" style="display:none; margin-left: 300px;">
   <h2>driver List</h2>
@@ -196,7 +196,7 @@
 
   // Define the role, columns, and retrieve data
   $role = 'driver'; // Or any other role
-  $columns = ['id','name', 'email', 'created_at'];
+  $columns = ['id','name', 'email', 'email_verified_at','created_at','updated_at'];
   $data = User::role($role)->get();
 
 @endphp
@@ -204,6 +204,37 @@
 <x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
 
 </div>
+{{-- OPERATIONS OFFICER TABLE --}}
+<div class="container mt-4" id="operationsOfficerList" style="display:none; margin-left: 300px;">
+  <h2>Operations officer List</h2>
+  @php
+
+  // Define the role, columns, and retrieve data
+  $role = 'operationsOfficer'; // Or any other role
+  $columns = ['id','name', 'email', 'email_verified_at','created_at','updated_at'];
+  $data = User::role($role)->get();
+
+@endphp
+
+<x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
+
+</div>
+{{-- TICKET OFFICER TABLE --}}
+<div class="container mt-4" id="ticketOfficerList" style="display:none; margin-left: 300px;">
+  <h2>Ticket Officer List</h2>
+  @php
+
+  // Define the role, columns, and retrieve data
+  $role = 'ticketOfficer'; // Or any other role
+  $columns = ['id','name', 'email', 'email_verified_at','created_at','updated_at'];
+  $data = User::role($role)->get();
+
+@endphp
+
+<x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
+
+</div>
+
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 <script src="{{ asset('js/dashboard.js') }}"></script>
 
