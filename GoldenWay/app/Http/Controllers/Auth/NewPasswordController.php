@@ -21,6 +21,7 @@ class NewPasswordController extends Controller
      */
     public function create(Request $request): View
     {
+       
         return view('auth.reset-password', ['request' => $request]);
     }
 
@@ -31,6 +32,14 @@ class NewPasswordController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+    //     $tokenExists = DB::table('password_reset_tokens')
+    //     ->where('email', $request->email)
+    // ->exists();
+    // if(!$tokenExists)
+    // {
+    //     return redirect()->route('password.request')->withErrors(['email' => 'The password reset token is expired.']);
+    // }
+
         $request->validate([
             'token' => ['required'],
             'email' => ['required', 'email'],
