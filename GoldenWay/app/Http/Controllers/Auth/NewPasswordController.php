@@ -30,15 +30,22 @@ class NewPasswordController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+    protected function tokenExpired($createdAt)
+    {
+        // Calculate expiration time based on configured expiration
+        $expirationTime = config('auth.passwords.users.expire');
+        
+        return $createdAt->addMinutes($expirationTime)->isPast();
+    }
     public function store(Request $request): RedirectResponse
     {
-    //     $tokenExists = DB::table('password_reset_tokens')
-    //     ->where('email', $request->email)
-    // ->exists();
-    // if(!$tokenExists)
-    // {
-    //     return redirect()->route('password.request')->withErrors(['email' => 'The password reset token is expired.']);
-    // }
+        $tokenExists = DB::table('password_reset_tokens')
+        ->where('email', $request->email)
+    ->first();
+    if(!$tokenExists || $this->tokenExpired($tokenExists->created_at))
+    {
+        return redirect()->route('reset-password')->withErrors(['email' => 'The password reset token is expired.']);
+    }
 
         $request->validate([
             'token' => ['required'],
