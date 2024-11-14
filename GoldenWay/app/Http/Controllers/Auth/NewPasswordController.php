@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -32,6 +32,7 @@ class NewPasswordController extends Controller
      */
     protected function tokenExpired($createdAt)
     {
+        $createdAt = Carbon::parse($createdAt);
         // Calculate expiration time based on configured expiration
         $expirationTime = config('auth.passwords.users.expire');
         
