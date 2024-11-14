@@ -21,7 +21,13 @@ class NewPasswordController extends Controller
      */
     public function create(Request $request): View
     {
-       
+        $tokenExists = DB::table('password_reset_tokens')
+        ->where('email', $request->email)
+    ->first();
+    if(!$tokenExists || $this->tokenExpired($tokenExists->created_at))
+    {
+        return view('auth.forgot-password') ->withErrors(['email' =>  'The password reset token is expired.']);
+    }
         return view('auth.reset-password', ['request' => $request]);
     }
 
