@@ -45,7 +45,7 @@ class NewPasswordController extends Controller
     ->first();
     if(!$tokenExists || $this->tokenExpired($tokenExists->created_at))
     {
-        return redirect()->route('reset-password')->withErrors(['email' => 'The password reset token is expired.']);
+        return redirect()->route('login')->with('status',  'The password reset token is expired.');
     }
 
         $request->validate([
