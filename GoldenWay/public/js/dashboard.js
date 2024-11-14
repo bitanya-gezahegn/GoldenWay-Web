@@ -35,7 +35,7 @@ document.getElementById('driverListMenu').addEventListener('click', function(eve
     operationsOfficer.style.display= 'none';
 });
 
-document.getElementById('operationOfficerListMenu').addEventListener('click', function(event) {
+document.getElementById('operationsOfficerListMenu').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent default link behavior
     const driverList = document.getElementById('driverList');
     const userList = document.getElementById('userList');
