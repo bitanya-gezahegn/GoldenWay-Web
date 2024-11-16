@@ -15,6 +15,12 @@ Route::resource('users', UserController::class);
 Route::get('/', function () {
     return view('home');
 });
+//OperationsOfficerui
+Route::get('/operation-officer', function () {
+    return view('operationsOfficer.operationOfficerui');
+})->name('operationofficerui');
+
+
 
 // Route::middleware(['auth', 'admin'])->group(function () {
 //     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
