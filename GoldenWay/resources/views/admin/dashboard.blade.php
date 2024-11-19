@@ -3,6 +3,7 @@
 @section('title', 'Admin Dashboard')
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Sidebar toggle button and sidebar menu -->
     <input type="checkbox" id="check" value="checked" checked="checked">
@@ -28,6 +29,7 @@
 
         <!-- User management -->
         <li>
+
           <a href="#" onclick="toggleMenu('manageUser')">
             <i class="fas fa-users"></i> User management
           </a>
@@ -233,6 +235,31 @@
 
 <x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
 
+</div>
+
+<div id="popup-form" class="popup-overlay" style="display:none;">
+    <div class="popup-content">
+        <form id="update-form">
+            @csrf
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+<br>
+<br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <br>
+            <label for="role">Role:</label>
+            <input type="text" id="role" name="role" required>
+            <br>
+            <br>
+          <input type="hidden" id="row-id" name="row-id">
+          <br>
+          <br>
+            <button type="submit">Update</button>
+            <button type="button" id="close-popup">Close</button>
+        </form>
+    </div>
 </div>
 
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">

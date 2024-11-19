@@ -68,7 +68,7 @@
         </thead>
         <tbody>
             @foreach($data as $row)
-                <tr class="border-b border-neutral-200 transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-white/10 dark:hover:bg-neutral-600">
+            <tr class="border-b border-neutral-200 transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-white/10 dark:hover:bg-neutral-600" data-id="{{ $row->id }}">
                     @foreach($columns as $column)
                         <td class="whitespace-nowrap px-6 py-4 ">{{ $row->$column }}</td>
                     @endforeach
@@ -90,7 +90,7 @@
                             />
                           </svg>
                         </a>
-                        <a x-data="{ tooltip: 'Edite' }" href="#">
+                        <a x-data="{ tooltip: 'Edite' }" href="#"  class="edit-icon" data-id="{{ $row->id }}">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"

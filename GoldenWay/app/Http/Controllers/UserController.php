@@ -39,17 +39,39 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(Request $request, User $user)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-        ]);
+    // public function update(Request $request, User $user)
+    // {
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'email' => 'required|email',
+    //     ]);
 
-        $user->update($request->all());
-        return redirect()->route('users.index')->with('success', 'User updated successfully.');
+    //     $user->update($request->all());
+    //     return redirect()->route('users.index')->with('success', 'User updated successfully.');
+    // }
+
+
+    public function update(Request $request, User $user)
+{
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'role' => 'required|string|max:255',
+    ]);
+
+    // Find the row by ID and update it
+    $row = YourModel::find($id);
+    if ($row) {
+        $row->name = $validatedData['name'];
+        $row->email = $validatedData['email'];
+        $row->role = $validatedData['role'];
+        $row->save();
+
+        return response()->json(['success' => true, 'name' => $row->name, 'email' => $row->email, 'role' => $row->role]);
     }
 
+    return response()->json(['success' => false, 'message' => 'Row not found.']);
+}
     public function destroy(User $user)
     {
         $user->delete();
