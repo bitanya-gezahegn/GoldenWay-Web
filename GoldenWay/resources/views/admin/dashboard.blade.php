@@ -45,9 +45,10 @@
         
         <!--Booking management -->
         <li>
-          <a href="#" onclick="toggleMenu('manageBooking')">
-            <i class="fas fa-calendar-alt"></i> Booking management
-          </a>
+        <a href="{{ route('operationofficerui') }}">
+    <i class="fas fa-calendar-alt"></i> Booking management
+</a>
+
           <!-- <ul class="submenu" id="manageBooking">
             <li><a href="#">Booking Management System</a></li>
             <li><a href="#">Booking Filters</a></li>
