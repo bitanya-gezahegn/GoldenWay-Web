@@ -46,4 +46,26 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+    public function customer()
+    {
+        return $this->hasOne(Customer::class, 'user_id');
+    }
+    public function driver()
+    {
+        return $this->hasOne(Driver::class, 'user_id');
+    }
+
+    public function operationsOfficer()
+    {
+        return $this->hasOne(OperationsOfficer::class, 'user_id');
+    }
+
+    public function ticketOfficer()
+    {
+        return $this->hasOne(TicketOfficer::class, 'user_id');
+    }
+    public function admin()
+    {
+        return $this->hasOne(Admin::class, 'user_id');
+    }
 }

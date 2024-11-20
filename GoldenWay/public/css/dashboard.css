@@ -143,3 +143,39 @@ section {
 .table th {
     background-color: #f2f2f2;
 }
+
+
+
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    /* top: 0; /* Stay at the top */
+   /*  left: 0; /*Stay at the left */
+    
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    
+    display: flex; /* Use flexbox to center content */
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the popup */
+    
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+
+.popup-content {
+    background-color: white; /* White background */
+    padding: 20px; /* Some padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    max-width: 500px; /* Max width */
+    width: 90%; /* Responsive width */
+    text-align: center; /* Center text */
+}

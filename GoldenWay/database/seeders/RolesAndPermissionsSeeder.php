@@ -4,9 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use PHPUnit\Framework\Attributes\Ticket;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
+use App\Models\Driver;
+use App\Models\Customer;
+use App\Models\OperationsOfficer;
+use App\Models\TicketOfficer;
+Use App\Models\Admin;
 
 class RolesAndPermissionsSeeder extends Seeder
 {
@@ -15,33 +21,54 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run(): void
     {
-  
-        //  $userRole = Role::create(['name' => 'user']);
-        //  $adminRole = Role::create(['name' => 'admin']);
+        
+        $userRole = Role::firstOrCreate(['name' => 'user']);
+        $adminRole = Role::firstOrCreate(['name' => 'admin']);
+        $customerRole=Role::firstOrCreate(['name'=>'customer']);
+        $driverRole = Role::firstOrCreate(['name' => 'driver']);
+        $operationsOfficerRole = Role::firstOrCreate(['name' => 'operationsOfficer']);
+        $ticketOfficerRole = Role::firstOrCreate(['name' => 'ticketOfficer']);
+        
+
          // Assign permissions (optional)
          // $manageUsers = Permission::create(['name' => 'manage users']);
          // $adminRole->givePermissionTo($manageUsers);
          
 // DEFAULT USER---------------------------------------------------
-// $user = User::create([
-//     'name' => 'user',
-//     'email' => 'user@gmail.com', 
-//     'password' => bcrypt('user1234'), 
-//     'email_verified_at' => now(), 
-// ]);
-// $user->assignRole('user');
+$user = User::firstOrCreate(['email' => 'user@gmail.com'],[
+    'name' => 'user',
+    'password' => bcrypt('user1234'), 
+    'email_verified_at' => now(), 
+]);
+$user->assignRole('user');
+
+
+//DEFAULT CUSTOMER------------------------------------------------------------
+$customer = User::firstOrCreate([  'email' => 'customer@gmail.com'],[
+    'name' => 'customer',
+    'password' => bcrypt('customer123'), 
+    'email_verified_at' => now(),
+]);
+$customer->assignRole('customer');
+Customer::firstOrCreate([ 'user_id' => $customer->id]);
+
 //DEFAULT ADMIN-------------------------------------------------------------------------
 
-// $admin = User::create([
-//     'name' => 'Admin',
-//     'email' => 'admin@gmail.com',
-//     'password' => bcrypt('admin123'), 
-//     'email_verified_at' => now(),
-// ]);
+$admin = User::firstOrCreate(['email' => 'admin@gmail.com'],
+[
+    'name' => 'Admin',
+    'password' => bcrypt('admin123'), 
+    'email_verified_at' => now(),
+]);
 
 // // Assign the 'admin' role to this user
-// $admin->assignRole('admin');
+$admin->assignRole('admin');
 
+Admin::firstOrCreate([ 'user_id' => $admin->id],
+[
+    'department' => 'Adminstration',
+    'employment_date' => now(),
+]);
     
         // Assign permissions (optional)
         // $manageUsers = Permission::create(['name' => 'manage users']);
@@ -49,39 +76,59 @@ class RolesAndPermissionsSeeder extends Seeder
 
 
 //DEFAULT DRIVER-------------------------------------------------------------
-        $driverRole = Role::firstOrCreate(['name' => 'Driver']);
       //  $driverRole->givePermissionTo($viewAssignedRoutes);
-      $driver = User::create([
+    $driver = User::firstOrCreate([  'email' => 'driver@gmail.com'],[
         'name' => 'Driver',
-        'email' => 'driver@gmail.com', // replace with a real email
-        'password' => bcrypt('driver123'), // replace with a strong password
-        'email_verified_at' => now(), // mark email as verified
+        'password' => bcrypt('driver123'), 
+        'email_verified_at' => now(), 
     ]);
+
     $driver->assignRole('driver');
 
+    Driver::firstOrCreate(['user_id' => $driver->id],
+    [
+    'license_number' => 'DR123456',
+    'employment_date' => now(),
+]);
+
     //DEFAULT OPERATIONS OFFICER
-        $operationsOfficerRole = Role::firstOrCreate(['name' => 'operationsOfficer']);
         //$operationsOfficerRole->givePermissionTo([$manageRoutes, $manageSchedules]);
-        $operationsOfficer = User::create([
+        $operationsOfficer = User::firstOrCreate(
+        [  'email' => 'Oofficer@gmail.com' ],
+        [
             'name' => 'Operations Officer',
-            'email' => 'Oofficer@gmail.com', 
             'password' => bcrypt('oofficer123'), 
             'email_verified_at' => now(), 
         ]);
+
         $operationsOfficer->assignRole('operationsOfficer');
 
+         OperationsOfficer::firstOrCreate([ 'user_id' => $operationsOfficer->id],
+[
+             'department' => 'Operations',
+             'employment_date' => now(),
+        ]);
+
+
+
+
 //DEFAULT TICKET OFFICER-------------------------------------------------------------------------
-        $ticketOfficerRole = Role::firstOrCreate(['name' => 'ticketOfficer']);
        // $ticketOfficerRole->givePermissionTo([$manageTickets, $viewTicketReports]);
-       $ticketOfficer = User::create([
+     $ticketOfficer = User::firstOrCreate(
+    ['email' => 'Tofficer@gmail.com'], // Search by email
+    [
         'name' => 'Ticket Officer',
-        'email' => 'Tofficer@gmail.com', 
-        'password' => bcrypt('tofficer123'), 
-        'email_verified_at' => now(), 
-    ]);
+        'password' => bcrypt('tofficer123'),
+        'email_verified_at' => now(),
+    ]
+);
     $ticketOfficer->assignRole('ticketOfficer');
 
-
+TicketOfficer::firstOrCreate([ 'user_id' => $ticketOfficer->id],
+[
+        'department' => 'Tickets',
+        'employment_date' => now(),
+        ]);
 
 
     }
