@@ -117,6 +117,20 @@ label #cancel {
     margin-left: 250px;
 }
 
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 250px;
+    }
+    #check:checked ~ .sidebar {
+        left: 0;
+    }
+    section {
+        margin-left: 0;
+    }
+}
+
+
 section {
     background: url(bg.jpeg) no-repeat;
     background-position: center;
@@ -144,38 +158,50 @@ section {
     background-color: #f2f2f2;
 }
 
-
-
-.popup-overlay {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    /* top: 0; /* Stay at the top */
-   /*  left: 0; /*Stay at the left */
-    
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    
-    display: flex; /* Use flexbox to center content */
-
+.table tr:hover {
+    background-color: #dbac29; /* golden */
+}#popup-form {
+    display: none; /* Initially hidden */
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center the popup */
-    
+    transform: translate(-50%, -50%); /* Centering */
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay background */
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Ensure it appears above other content */
+    z-index: 1000; /* Make sure it's on top */
 }
 
+#popup-form form {
+    background-color: white; /* Form background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
 
-.popup-content {
-    background-color: white; /* White background */
-    padding: 20px; /* Some padding */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    max-width: 500px; /* Max width */
-    width: 90%; /* Responsive width */
-    text-align: center; /* Center text */
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+#close-popup {
+    background-color: rgb(184, 157, 39);
+    color: white;
 }

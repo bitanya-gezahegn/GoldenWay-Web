@@ -50,33 +50,35 @@ class UserController extends Controller
     //     return redirect()->route('users.index')->with('success', 'User updated successfully.');
     // }
 
-
     public function update(Request $request, User $user)
 {
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
-        'role' => 'required|string|max:255',
+        
     ]);
 
-    // Find the row by ID and update it
-    $row = YourModel::find($id);
-    if ($row) {
-        $row->name = $validatedData['name'];
-        $row->email = $validatedData['email'];
-        $row->role = $validatedData['role'];
-        $row->save();
+    $user->update($validatedData);
 
-        return response()->json(['success' => true, 'name' => $row->name, 'email' => $row->email, 'role' => $row->role]);
-    }
-
-    return response()->json(['success' => false, 'message' => 'Row not found.']);
+    return response()->json([
+        'success' => true,
+        'name' => $user->name,
+        'email' => $user->email,
+        
+    ]);
 }
+
+    
     public function destroy(User $user)
     {
+        if (!$user) {
+            return redirect()->route('users.index')->with('error', 'User not found.');
+        }
+    
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
+    
 
     public function showUsersByRole($role)
 {
@@ -86,3 +88,5 @@ class UserController extends Controller
     return view('admin.dashboard', compact('data', 'columns', 'role'));
 }
 }
+
+

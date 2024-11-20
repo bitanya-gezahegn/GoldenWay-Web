@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 
+Route::put('/users/{user}', [UserController::class, 'update']);
 
 Route::put('/row/{id}', [UserController::class, 'update']);
 Route::resource('users', UserController::class);
