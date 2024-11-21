@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'Operations Officer Dashboard')
 
 @section('content')
 
@@ -11,7 +11,7 @@
    
     </label>
     <div class="sidebar">
-      <header>Dashboard</header>
+      <header>OOfficer Dashboard</header>
       <ul>
         <!-- Employee management -->
         <li>
@@ -178,7 +178,7 @@
 
     <div class="container mt-4" id="userList" style="display:none; margin-left: 300px;">
     <h2>User List</h2>
-    <x-dynamic-table table="users" />
+    {{-- <x-dynamic-table table="users" /> --}}
 </div>
 
     <style>

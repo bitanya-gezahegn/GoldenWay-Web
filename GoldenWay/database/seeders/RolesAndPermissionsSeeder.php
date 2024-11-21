@@ -45,7 +45,7 @@ $user->assignRole('user');
 
 //DEFAULT CUSTOMER------------------------------------------------------------
 $customer = User::firstOrCreate([  'email' => 'customer@gmail.com'],[
-    'name' => 'customer',
+    'name' => 'Customer',
     'password' => bcrypt('customer123'), 
     'email_verified_at' => now(),
 ]);
@@ -94,7 +94,7 @@ Admin::firstOrCreate([ 'user_id' => $admin->id],
     //DEFAULT OPERATIONS OFFICER
         //$operationsOfficerRole->givePermissionTo([$manageRoutes, $manageSchedules]);
         $operationsOfficer = User::firstOrCreate(
-        [  'email' => 'Oofficer@gmail.com' ],
+        [  'email' => 'oofficer@gmail.com' ],
         [
             'name' => 'Operations Officer',
             'password' => bcrypt('oofficer123'), 
@@ -115,7 +115,7 @@ Admin::firstOrCreate([ 'user_id' => $admin->id],
 //DEFAULT TICKET OFFICER-------------------------------------------------------------------------
        // $ticketOfficerRole->givePermissionTo([$manageTickets, $viewTicketReports]);
      $ticketOfficer = User::firstOrCreate(
-    ['email' => 'Tofficer@gmail.com'], // Search by email
+    ['email' => 'tofficer@gmail.com'], // Search by email
     [
         'name' => 'Ticket Officer',
         'password' => bcrypt('tofficer123'),
