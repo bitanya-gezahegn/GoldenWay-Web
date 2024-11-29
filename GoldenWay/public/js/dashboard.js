@@ -1,5 +1,3 @@
-
-
 function toggleMenu(id) {
     const submenu = document.getElementById(id);
     submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
@@ -171,3 +169,60 @@ document.getElementById("popup-form").addEventListener("submit", function(event)
 document.getElementById("close-popup").addEventListener("click", function() {
     document.getElementById("popup-form").style.display = "none";
 });
+
+
+// Event listener for delete icon (the 'delete-icon' class should be applied to your delete buttons)
+document.querySelectorAll('.delete-icon').forEach((button) => {
+    button.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default behavior of the link/button
+        customConfirm(event, button); // Call customConfirm function with the clicked button
+    });
+});
+
+
+function customConfirm(event, element) {
+    event.preventDefault(); // Prevent default anchor action (link click)
+
+    const modal = document.getElementById('custom-modal');
+    modal.style.display = 'flex'; // Show the modal for confirmation
+
+    // Get the user ID from the button's data-id attribute
+    const userId = element.getAttribute('data-id');
+    
+    const yesButton = document.getElementById('modal-yes');
+    const noButton = document.getElementById('modal-no');
+
+    // When "Yes" is clicked, proceed to delete the user
+    yesButton.onclick = function () {
+        modal.style.display = 'none'; // Close the modal
+        deleteUser(userId, element); // Call the deleteUser function
+    };
+
+    // When "No" is clicked, close the modal
+    noButton.onclick = function () {
+        modal.style.display = 'none'; // Close the modal without doing anything
+    };
+}
+
+function deleteUser(userId, element) {
+    fetch(`/users/${userId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+    .then(response => response.json())  // Parse the JSON response
+    .then(data => {
+        if (data.success) { // If deletion is successful
+            alert('User deleted successfully!');
+            location.reload(); // Reload the page to reflect the changes
+        } else {
+            alert('Failed to delete user: ' + data.message); // Show error message if deletion failed
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while deleting the user. Please try again later.');
+    });
+}

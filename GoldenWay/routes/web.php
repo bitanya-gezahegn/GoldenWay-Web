@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\UserController;
+Route::resource('users', UserController::class);
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/users/{user}', function () {
+    return redirect()->route('admin.dashboard');
+});
+
+
 
 Route::put('/users/{user}', [UserController::class, 'update']);
 

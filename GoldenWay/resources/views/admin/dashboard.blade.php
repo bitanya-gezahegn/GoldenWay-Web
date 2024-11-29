@@ -127,74 +127,25 @@
       </ul>
     </div>
 
-    <!-- Employee Table -->
-    <!-- <div class="container mt-4" id="employeeList" style="display:none; margin-left: 300px;">
-        <h2>Employee List</h2>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Position</th>
-                    <th>Department</th>
-                    <th>Hire Date</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>John Doe</td>
-                    <td>johndoe@example.com</td>
-                    <td>0911121314</td> <!-- Updated phone number -->
-                    <!-- <td>Software Engineer</td>
-                    <td>IT Department</td>
-                    <td>2023-05-01</td>
-                    <td>Active</td>
-                    <td>
-                        <a href="#">Edit</a> | 
-                        <a href="#">Delete</a>
-                    </td>
-                </tr>
-                <tr> -->
-                    <!-- <td>2</td>
-                    <td>Jane Smith</td>
-                    <td>janesmith@example.com</td>
-                    <td>0911111213</td> <!-- Updated phone number -->
-                    <!-- <td>HR Manager</td> -->
-                    <!-- <td>HR Department</td>
-                    <td>2022-03-15</td>
-                    <td>Active</td>
-                    <td> -->
-                        <!-- <a href="#">Edit</a> | 
-                        <a href="#">Delete</a>
-                    </td>
-                </tr>
-            </tbody> -->
-        <!-- </table>
-    </div>  -->
+    {{-- USER TABLE --}}
+    <div class="container mt-4" id="userList" style="display:none; margin-left: 300px;">
+    <h2 class="tableTitle">User List</h2>
+    @php
+        use App\Models\User;
+        // Define the role, columns, and retrieve data
+        $role = 'user'; // Or any other role
+        $columns = ['id', 'name', 'email', 'created_at', 'email_verified_at', 'updated_at'];
+        $data = User::role($role)->get();
+    @endphp
 
     
-
-{{-- USER TABLE --}}
-    <div class="container mt-4" id="userList" style="display:none; margin-left: 300px;">
-    <h2>User List</h2>
-    @php
-    use App\Models\User;
-    // Define the role, columns, and retrieve data
-    $role = 'user'; // Or any other role
-    $columns = ['id','name', 'email', 'created_at', 'email_verified_at','created_at','updated_at'];
-    $data = User::role($role)->get();
-  
-@endphp
-
-<x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
-{{-- DRIVER TABLE --}}
+        <x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
+    
 </div>
-<div class="container mt-4" id="driverList" style="display:none; margin-left: 300px;">
+
+{{-- DRIVER TABLE --}}
+
+<div class="container mt-4" id="driverList" style="display:none; margin-left: 300px;   ">
   <h2>driver List</h2>
   @php
 
@@ -205,11 +156,11 @@
 
 @endphp
 
-<x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
+<x-dynamic-table :data="$data" :columns="$columns" :role="$role"  class="container mt-4"/>
 
 </div>
 {{-- OPERATIONS OFFICER TABLE --}}
-<div class="container mt-4" id="operationsOfficerList" style="display:none; margin-left: 300px;">
+<div  id="operationsOfficerList" style="display:none; margin-left: 300px;">
   <h2>Operations officer List</h2>
   @php
 
@@ -220,7 +171,7 @@
 
 @endphp
 
-<x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
+<x-dynamic-table :data="$data" :columns="$columns" :role="$role" class="container mt-4"/>
 
 </div>
 {{-- TICKET OFFICER TABLE --}}
@@ -240,6 +191,7 @@
 </div>
 <div id="popup-form" style="display: none;">
     <form>
+      <h2>Update Form</h2>
         <input type="hidden" id="row-id" />
         <label for="name">Name:</label>
         <input type="text" id="name" />
@@ -251,8 +203,8 @@
     </form>
 </div>
 
-
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+
 <script src="{{ asset('js/dashboard.js') }}"></script>
 
     <!-- FontAwesome for icons -->

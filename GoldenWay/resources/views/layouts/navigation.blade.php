@@ -1,4 +1,8 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<!-- <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700"> -->
+   
+<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}"> 
+<nav x-data="{ open: false }" class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 z-50">
+
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -151,4 +155,6 @@
             @endif
         </div>
     </div>
+   
 </nav>
+
