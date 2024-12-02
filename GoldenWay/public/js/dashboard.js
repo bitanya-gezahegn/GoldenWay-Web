@@ -66,13 +66,13 @@ document.addEventListener("DOMContentLoaded", function() {
             const userId = button.getAttribute("data-id");
             const userName = button.getAttribute("data-name");
             const userEmail = button.getAttribute("data-email");
-            const userRole = button.getAttribute("data-role");
+           
 
             // Fill the popup form with this data
             document.getElementById("row-id").value = userId;
             document.getElementById("name").value = userName;
             document.getElementById("email").value = userEmail;
-            document.getElementById("role").value = userRole;
+            
 
             // Show the popup
             document.getElementById("popup-form").style.display = "block";
@@ -90,7 +90,7 @@ document.getElementById("popup-form").addEventListener("submit", function(event)
     const userId = document.getElementById('row-id').value;
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    const role = document.getElementById('role').value;
+    // const role = document.getElementById('role').value;
 
     // Check if all fields are filled
     if (!name || !email || !role) {
@@ -172,12 +172,12 @@ document.getElementById("close-popup").addEventListener("click", function() {
 
 
 // Event listener for delete icon (the 'delete-icon' class should be applied to your delete buttons)
-document.querySelectorAll('.delete-icon').forEach((button) => {
-    button.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent default behavior of the link/button
-        customConfirm(event, button); // Call customConfirm function with the clicked button
-    });
-});
+// document.querySelectorAll('.delete-icon').forEach((button) => {
+//     button.addEventListener('click', function (event) {
+//         event.preventDefault(); // Prevent default behavior of the link/button
+//         customConfirm(event, button); // Call customConfirm function with the clicked button
+//     });
+// });
 
 
 function customConfirm(event, element) {

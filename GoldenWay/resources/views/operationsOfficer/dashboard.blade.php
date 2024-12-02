@@ -16,12 +16,12 @@
         <!-- Employee management -->
         <li>
           <a href="#" onclick="toggleMenu('registerEmployee')">
-            <i class="fas fa-user-plus"></i> Employee management
+            <i class="fas fa-user-plus"></i> Route And schedule Management
           </a>
           <ul class="submenu" id="registerEmployee">
-            <li><a href="#">Driver</a></li>
-            <li><a href="#" id="employeeListMenu">Operation officer</a></li> <!-- Employee List submenu link -->
-             <li><a href="#">Ticket officer</a></li>
+            <li><a href="#">Route</a></li>
+            <li><a href="#" id="employeeListMenu">Schedule</a></li> <!-- Employee List submenu link -->
+             <!-- <li><a href="#">Ticket officer</a></li> -->
             <!-- <li><a href="#">Employee Profile</a></li>  -->
           </ul>
         </li>
@@ -29,21 +29,21 @@
         <!-- User management -->
         <li>
           <a href="#" onclick="toggleMenu('manageUser')">
-            <i class="fas fa-users"></i> User management
+            <i class="fas fa-users"></i> Moniter Fleet Status
           </a>
           <ul class="submenu" id="manageUser">
-            <li><a href="#" id="userListMenu">User List</a></li>
-            <li><a href="#">Add New User</a></li>
+            <li><a href="#" id="userListMenu">Fleet Status</a></li>
+            <!-- <li><a href="#">Add New User</a></li>
             <li><a href="#">Edit User</a></li>
-            <li><a href="#">User Activity Log</a></li>
-          </ul>
+            <li><a href="#">User Activity Log</a></li> -->
+          </ul> 
         </li>
 
         
         <!--Booking management -->
         <li>
           <a href="#" onclick="toggleMenu('manageBooking')">
-            <i class="fas fa-calendar-alt"></i> Booking management
+            <i class="fas fa-calendar-alt"></i> Assign Driver
           </a>
           <!-- <ul class="submenu" id="manageBooking">
             <li><a href="#">Booking Management System</a></li>
@@ -54,28 +54,28 @@
         </li>
 
         <!-- Promotional Content -->
-        <li>
+        <!-- <li>
           <a href="#" onclick="toggleMenu('promotionalContent')">
-            <i class="fas fa-bullhorn"></i> Promotional Content
+            <i class="fas fa-bullhorn"></i> view Rating And feedbacks
           </a>
           <ul class="submenu" id="promotionalContent">
-            <li><a href="#">Promotions Overview</a></li>
-            <li><a href="#">Add New Promotion</a></li>
-            <li><a href="#">Active & Expired Promotions</a></li>
+            <li><a href="#">Rating And Feedbacks</a></li>
+           <li><a href="#">Add New Promotion</a></li>
+            <li><a href="#">Active & Expired Promotions</a></li> -->
             <!-- <li><a href="#">Promotion Analytics</a></li> -->
-          </ul>
-        </li>
+          <!-- </ul>
+        </li> --> 
 
                 <!-- Reports -->
                 <li>
           <a href="#" onclick="toggleMenu('reports')">
-            <i class="fas fa-tools"></i> Reports
+            <i class="fas fa-tools"></i> Coordinates with Delivers
           </a>
           <ul class="submenu" id="reports">
-            <li><a href="#">Sales and Financial Reports</a></li>
+            <!-- <li><a href="#">Sales and Financial Reports</a></li>
             <li><a href="#">Booking Reports</a></li>
             <li><a href="#">Employee Performance Reports</a></li>
-            <li><a href="#">Export Options</a></li>
+            <li><a href="#">Export Options</a></li> -->
           </ul>
         </li>
 
@@ -86,7 +86,7 @@
             <i class="fas fa-comments"></i> User feedback
           </a>
           <ul class="submenu" id="viewFeedback">
-            <li><a href="#">User Feedback List</a></li>
+            <li><a href="#">User Feedback and Rating</a></li>
             <!-- <li><a href="#">View Detailed Feedback</a></li> -->
             <!-- <li><a href="#">Feedback Analytics</a></li> -->
             <li><a href="#">Respond to Feedback</a></li>
