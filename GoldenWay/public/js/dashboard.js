@@ -171,58 +171,68 @@ document.getElementById("close-popup").addEventListener("click", function() {
 });
 
 
-// Event listener for delete icon (the 'delete-icon' class should be applied to your delete buttons)
-// document.querySelectorAll('.delete-icon').forEach((button) => {
-//     button.addEventListener('click', function (event) {
-//         event.preventDefault(); // Prevent default behavior of the link/button
-//         customConfirm(event, button); // Call customConfirm function with the clicked button
-//     });
-// });
 
 
-function customConfirm(event, element) {
-    event.preventDefault(); // Prevent default anchor action (link click)
 
-    const modal = document.getElementById('custom-modal');
-    modal.style.display = 'flex'; // Show the modal for confirmation
 
-    // Get the user ID from the button's data-id attribute
-    const userId = element.getAttribute('data-id');
-    
-    const yesButton = document.getElementById('modal-yes');
-    const noButton = document.getElementById('modal-no');
 
-    // When "Yes" is clicked, proceed to delete the user
-    yesButton.onclick = function () {
-        modal.style.display = 'none'; // Close the modal
-        deleteUser(userId, element); // Call the deleteUser function
-    };
 
-    // When "No" is clicked, close the modal
-    noButton.onclick = function () {
-        modal.style.display = 'none'; // Close the modal without doing anything
-    };
-}
 
-function deleteUser(userId, element) {
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Add event listeners to all delete icons dynamically
+    const deleteButtons = document.querySelectorAll(".delete-icon");
+
+    deleteButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            // Get data from the button's data attributes
+            const userId = button.getAttribute("data-id");
+
+            // Show the confirmation popup
+            document.getElementById("delete-popup-form").style.display = "block";
+            document.getElementById("delete-yes").setAttribute("data-id", userId); // Store the user ID on the "Yes" button
+        });
+    });
+
+    // Event listener for "Yes" button in the confirmation modal
+    document.getElementById("delete-yes").addEventListener("click", function() {
+        const userId = this.getAttribute("data-id"); // Get the user ID from the button
+        deleteUser(userId); // Call the function to delete the user
+    });
+
+    // Close the confirmation popup
+    document.getElementById("delete-no").addEventListener("click", function() {
+        document.getElementById("delete-popup-form").style.display = "none";
+    });
+});
+
+// Function to delete the user
+function deleteUser(userId) {
     fetch(`/users/${userId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token for security
         }
     })
-    .then(response => response.json())  // Parse the JSON response
+    .then(response => response.json()) // Parse the JSON response
     .then(data => {
-        if (data.success) { // If deletion is successful
+        if (data.success) {
             alert('User deleted successfully!');
-            location.reload(); // Reload the page to reflect the changes
+            document.getElementById("delete-popup-form").style.display = "none"; // Close the popup
+
+            // Remove the deleted user's row from the page immediately
+            const userRow = document.querySelector(`tr[data-id="${userId}"]`);
+            if (userRow) {
+                userRow.remove(); // Remove the user's row from the table
+            }
         } else {
-            alert('Failed to delete user: ' + data.message); // Show error message if deletion failed
+            alert('Failed to delete user: ' + data.message); // Show an error message if deletion failed
         }
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred while deleting the user. Please try again later.');
+        console.error('Error:', error); // Log the error to the console
+        alert('An error occurred. Please try again later.'); // Show a generic error message
     });
 }
+

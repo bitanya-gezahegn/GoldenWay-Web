@@ -203,6 +203,25 @@
     </form>
 </div>
 
+
+
+
+
+
+
+<!-- Confirmation Popup for Deletion -->
+<div id="delete-popup-form" 
+    style="display: none; position: fixed; top: 300px; left: 400px; right: 500px; 
+    width: 350px; height: 350px; justify-content: center; align-items: center;">
+    <div style="background: #fff; padding: 20px; 
+    border: 3px solid rgb(184, 157, 39);; border-radius: 8px; text-align: center;">
+        <p style="margin-bottom: 20px;">Are you sure you want to delete this user?</p>
+        <button id="delete-yes" style="margin-right: 10px; background-color: rgb(184, 157, 39);; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">Yes</button>
+        <button id="delete-no" style="background-color:rgb(184, 157, 39);; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">No</button>
+    </div>
+</div>
+
+
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
 <script src="{{ asset('js/dashboard.js') }}"></script>
