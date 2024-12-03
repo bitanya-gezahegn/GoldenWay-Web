@@ -52,6 +52,11 @@
 
 <!-- Content Area (right of the sidebar) -->
 <div class="container mt-4" style="margin-left: 300px;">
+   <div id="onDisplay" class="menu-section" style="display:flex;">
+    <h2>Manage Routes and Schedules</h2>
+<x-sessions-table>
+    <!-- Your content for managing routes and schedules goes here -->
+  </div>
   
   <!-- Manage Routes & Schedules Section -->
   <div id="manageRoutesSchedulesSection" class="menu-section" style="display:none;">
