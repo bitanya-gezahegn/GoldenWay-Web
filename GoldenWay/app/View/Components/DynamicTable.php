@@ -11,19 +11,19 @@ class DynamicTable extends Component
     public $columns;
     public $role;
 
-    public function __construct($data, $columns, $role)
+    public function __construct($data, $columns)
     {
         $this->data = $data;
         $this->columns = $columns;
-        $this->role = $role;
+ 
     }
 
     public function render()
     {
         return view('components.dynamic-table', [
             'data' => $this->data,
-            'columns' => $this->columns,
-            'role'=> $this->role
+            'columns' => $this->columns
+          
         ]);
     }
     // public $data;

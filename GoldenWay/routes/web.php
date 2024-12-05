@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TicketOfficerController;
 use App\Http\Controllers\OperationsOfficerController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,7 +17,7 @@ Route::get('/users/{user}', function () {
     return redirect()->route('admin.dashboard');
 });
 
-
+Route::get('/admin/dashboard/customer', [CustomerController::class, 'tableData'])->name('admin.dashboard.customer');
 
 Route::put('/users/{user}', [UserController::class, 'update']);
 

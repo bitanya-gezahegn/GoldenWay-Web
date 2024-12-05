@@ -4,9 +4,13 @@
 
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
+@php
+use App\Models\User;
+$data=[];
+$columns=[];
 
+@endphp
 
-    <!-- Sidebar toggle button and sidebar menu -->
     <input type="checkbox" id="check" value="checked" checked="checked">
     <label >
       <i class="fas fa-bars" id="btn"></i>
@@ -32,10 +36,10 @@
         <li>
 
           <a href="#" onclick="toggleMenu('manageUser')">
-            <i class="fas fa-users"></i> User management
+            <i class="fas fa-users"></i> Customer management
           </a>
           <ul class="submenu" id="manageUser">
-            <li><a href="#" id="userListMenu">User List</a></li>
+            <li><a href="{{ route('admin.dashboard.customer') }}" id="userListMenu">Customer List</a></li>
             <li><a href="#">Add New User</a></li>
             <li><a href="#">Edit User</a></li>
             <li><a href="#">User Activity Log</a></li>
@@ -130,16 +134,16 @@
     {{-- USER TABLE --}}
     <div class="container mt-4" id="userList" style="display:none; margin-left: 300px;">
     <h2 class="tableTitle">User List</h2>
-    @php
+    {{-- @php
         use App\Models\User;
         // Define the role, columns, and retrieve data
         $role = 'user'; // Or any other role
         $columns = ['id', 'name', 'email', 'created_at', 'email_verified_at', 'updated_at'];
         $data = User::role($role)->get();
-    @endphp
+    @endphp --}}
 
     
-        <x-dynamic-table :data="$data" :columns="$columns" :role="$role" />
+        <x-dynamic-table :data="$data" :columns="$columns" />
     
 </div>
 

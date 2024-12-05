@@ -3,8 +3,9 @@
 @section('title', 'Operation Officer Dashboard')
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
-<!-- Sidebar toggle button and sidebar menu -->
+
 <input type="checkbox" id="check" value="checked" checked="checked">
 <label>
   <i class="fas fa-bars" id="btn"></i>
@@ -61,6 +62,7 @@
   <!-- Manage Routes & Schedules Section -->
   <div id="manageRoutesSchedulesSection" class="menu-section" style="display:none;">
     <h2>Manage Routes and Schedules</h2>
+
     <!-- Your content for managing routes and schedules goes here -->
   </div>
 
