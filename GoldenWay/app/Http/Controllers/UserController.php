@@ -79,27 +79,23 @@ class UserController extends Controller
     //     return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     // }
    
-
     public function destroy($id)
     {
-        // Attempt to find the user by ID
+        // Find the user by ID
         $user = User::find($id);
     
-        // Check if user exists
         if (!$user) {
-            return response()->json(['success' => false, 'message' => 'User not found.'], 404);
+            return response()->json(['success' => false, 'message' => 'User not found'], 404);
         }
     
-        // Proceed with deletion
-        $user->delete();
-    
-        return response()->json(['success' => true, 'id' => $id, 'message' => 'User deleted successfully.']);
+        try {
+            $user->delete(); // Delete the user from the database
+            return response()->json(['success' => true, 'message' => 'User deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Failed to delete user']);
+        }
     }
     
-
-
-    
-
 
     public function showUsersByRole($role)
 {
